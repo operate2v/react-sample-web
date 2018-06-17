@@ -6,14 +6,23 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import { datas } from '../constants';
+import { datas, colors } from '../constants';
 
 const styles = theme => ({
   root: {
+    flexGrow: 1,
     display: 'flex',
     flexWrap: 'wrap',
     minWidth: 300,
     width: '100%',
+  },
+  appbar: {
+    backgroundColor: colors.mainColor,
+    color: 'white',
+  },
+  appbarSecond: {
+    backgroundColor: colors.white,
+    color: 'black',
   },
   flex: {
     flex: 1,
@@ -58,43 +67,66 @@ const styles = theme => ({
   },
 });
 
-const Header = (props) => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="fixed" color="default">
-        <Toolbar>
-          <Typography variant="display1" color="inherit" className={classes.flex}>
-            SAVO
-          </Typography>
-          {datas.HEADER_BUTTONS.map(item => (
-            <ButtonBase
-              focusRipple
-              variant="fab"
-              key={item.id}
-              className={classes.button}
-              focusVisibleClassName={classes.focusVisible}
-              onClick={() => props.history.push(item.navigate)}
-              style={{
-                width: 150,
-              }}
-            >
-              <Typography
-                component="span"
-                variant="subheading"
-                color="inherit"
-                className={classes.imageTitle}
+class Header extends React.Component {
+  state = { toolbarColor: 'intro' };
+
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.handleScroll);
+  };
+
+  handleScroll = () => {
+    console.log(window.scrollY);
+    const scrollPositoin = window.scrollY;
+    this.setState({
+      toolbarColor: scrollPositoin > window.innerHeight - 100 ? 'description' : 'intro',
+    });
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar
+          position="fixed"
+          className={this.state.toolbarColor === 'intro' ? classes.appbar : classes.appbarSecond}
+        >
+          <Toolbar>
+            <Typography variant="display1" color="inherit" className={classes.flex}>
+              SAVO
+            </Typography>
+            {datas.HEADER_BUTTONS.map(item => (
+              <ButtonBase
+                focusRipple
+                variant="fab"
+                key={item.id}
+                className={classes.button}
+                focusVisibleClassName={classes.focusVisible}
+                onClick={() => this.props.history.push(item.navigate)}
+                style={{
+                  width: 150,
+                }}
               >
-                {item.title}
-                <span className={classes.imageMarked} />
-              </Typography>
-            </ButtonBase>
-          ))}
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-};
+                <Typography
+                  component="span"
+                  variant="subheading"
+                  color="inherit"
+                  className={classes.imageTitle}
+                >
+                  {item.title}
+                  <span className={classes.imageMarked} />
+                </Typography>
+              </ButtonBase>
+            ))}
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
