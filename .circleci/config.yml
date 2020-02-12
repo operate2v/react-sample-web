@@ -129,8 +129,8 @@ workflows:
   androidios:
     jobs:
       build:
-        filters:
-          branches:
-            only:
-              - master
-              - /feature-.*/
+          filters:
+            branches:
+              only:
+                - master
+                - /rc-.*/
