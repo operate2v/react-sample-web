@@ -129,6 +129,7 @@ workflows:
   node-reactnative:
     jobs:
       - reactnative:
-        filters:
-          branches:
-            only: master
+        branches:
+          only: 
+            - master
+            - /feature-.*/
