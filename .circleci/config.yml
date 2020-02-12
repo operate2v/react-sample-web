@@ -1,45 +1,25 @@
 version: 2.1
 machine:
-  environment:
-      JAVA_HOME: /usr/lib/jvm/java-9-oracle
+    environment:
+        JAVA_HOME: /usr/lib/jvm/java-9-oracle
 jobs:
-  build:
-    working_directory: ~/react-sample-web
-    docker:
-      - image: reactnativecommunity/react-native-android:latest
-    steps:
-      - checkout
-      - run:
-          name: "get config1"
-          command: git config --global user.name "kraksin"
-      - run:
-          name: "get config2"
-          command: git config --global user.email "kraksin12@gmail.com"
-      - run:
-          name: "chmod file"
-          command: chmod 755 ./upload_test_app.sh
-      - run:
-          name: "sh gogo"
-          command: ./upload_test_app.sh
-      - save_cache:
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
-          paths:
-            - ~/.cache/yarn
-      - save_cache:
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-          paths:
-            - node_modules
-      - persist_to_workspace:
-          root: ~/react-sample-web
-          paths:
-            - node_modules
-      - store_test_results:
-          path: test-results
-      - store_artifacts:
-          path: test-results
+    build:
+        working_directory: ~/react-sample-web
+        docker:
+            - {image: 'reactnativecommunity/react-native-android:latest'}
+        steps:
+            - checkout
+            - {run: {name: 'get config1', command: 'git config --global user.name "kraksin"'}}
+            - {run: {name: 'get config2', command: 'git config --global user.email "kraksin12@gmail.com"'}}
+            - {run: {name: 'chmod file', command: 'chmod 755 ./upload_test_app.sh'}}
+            - {run: {name: 'sh gogo', command: ./upload_test_app.sh}}
+            - {save_cache: {key: 'yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}', paths: [~/.cache/yarn]}}
+            - {save_cache: {key: 'node-v1-{{ checksum "package.json" }}-{{ arch }}', paths: [node_modules]}}
+            - {persist_to_workspace: {root: ~/react-sample-web, paths: [node_modules]}}
+            - {store_test_results: {path: test-results}}
+            - {store_artifacts: {path: test-results}}
 workflows:
-  jobs:
-    - build:
-      filters:
-        branches:
-          only: master
+    jobs:
+        -
+            build: null
+            filters: {branches: {only: master}}
