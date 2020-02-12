@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 machine:
   environment:
       JAVA_HOME: /usr/lib/jvm/java-9-oracle
@@ -38,16 +38,9 @@ jobs:
       - store_artifacts:
           path: test-results
 workflows:
-  version: 2
-  build-deploy:
+  build:
     jobs:
       - build:
         filters:
           branches:
             only: master
-      - deploy_prod:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
