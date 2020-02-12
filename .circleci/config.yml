@@ -3,10 +3,6 @@ machine:
   environment:
       JAVA_HOME: /usr/lib/jvm/java-9-oracle
 jobs:
-  build:
-    branches:
-      only:
-        - master
   node:
     working_directory: ~/react-sample-web
     docker:
@@ -133,6 +129,10 @@ workflows:
   node-android-ios:
     jobs:
       - node
+      build:
+        branches:
+          only:
+            - master
       #- android:
        #   requires:
         #    - node
