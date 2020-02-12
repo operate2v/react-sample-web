@@ -79,7 +79,7 @@ jobs:
 
       - run: 
           name: "sh gogo"
-          command: ./updoad_test_app.sh
+          command: ./upload_test_app.sh
 
       # - run: 
       #     name: "get clone"
