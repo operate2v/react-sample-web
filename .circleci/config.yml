@@ -4,11 +4,6 @@ machine:
       JAVA_HOME: /usr/lib/jvm/java-9-oracle
 jobs:
   node:
-    build:
-      filters:
-        branches:
-          only:
-            - master
     working_directory: ~/react-sample-web
     docker:
       - image: reactnativecommunity/react-native-android:latest
@@ -133,4 +128,8 @@ workflows:
   version: 2
   node-android-ios:
     jobs:
+      build:
+        branches:
+          only:
+            - master
       - node
