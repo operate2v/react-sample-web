@@ -10,54 +10,42 @@ jobs:
     branches:
       only:
         - master
-        - /rc-.*/
     steps:
       - checkout
-
-      - run: 
+      - run:
           name: "get config1"
           command: git config --global user.name "kraksin"
-
-      - run: 
+      - run:
           name: "get config2"
           command: git config --global user.email "kraksin12@gmail.com"
-
-      - run: 
+      - run:
           name: "chmod file"
           command: chmod 755 ./upload_test_app.sh
-
-      - run: 
+      - run:
           name: "sh gogo"
           command: ./upload_test_app.sh
-       
       - save_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - ~/.cache/yarn
-
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
             - node_modules
-
       - persist_to_workspace:
           root: ~/react-sample-web
           paths:
             - node_modules
-
       - store_test_results:
           path: test-results
-
       - store_artifacts:
           path: test-results
-
 workflows:
   version: 2
-  androidios:
+  build:
     jobs:
       - build:
         filters:
           branches:
             only:
               - master
-              - /rc-.*/
