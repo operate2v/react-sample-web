@@ -128,8 +128,4 @@ workflows:
   version: 2
   node-reactnative:
     jobs:
-      - reactnative:
-        branches:
-          only: 
-            - master
-            - /feature-.*/
+      - reactnative
