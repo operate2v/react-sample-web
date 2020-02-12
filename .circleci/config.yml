@@ -7,6 +7,8 @@ jobs:
     working_directory: ~/react-sample-web
     docker:
       - image: reactnativecommunity/react-native-android:latest
+    branches:
+      only: master
     steps:
       - checkout
       - run:
@@ -37,9 +39,9 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-workflows:
-  jobs:
-    - build:
-      filters:
-        branches:
-          only: master
+# workflows:
+#   jobs:
+#     - build:
+#       filters:
+#         branches:
+#           only: master
