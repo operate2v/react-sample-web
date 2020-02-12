@@ -9,11 +9,11 @@ echo "clone git SSH"
 git clone git@github.com:operate2v/operate2v.github.io.git
 
 echo "touch text"
-cd operate2v.github.io && touch test.txt
+cd operate2v.github.io && cd contentfly && touch test.txt
 
 echo "git add"
 # git add *
-git add *
+cd .. && git add *
 
 echo "git commit"
 # git commit
