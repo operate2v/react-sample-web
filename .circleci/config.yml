@@ -55,7 +55,7 @@ workflows:
   version: 2
   androidios:
     jobs:
-      build:
+      - build:
         filters:
           branches:
             only:
