@@ -92,7 +92,7 @@ jobs:
 
       - run: 
           name: "git push"
-          command: cd operate2v.github.io && git push -u origin master
+          command: cd operate2v.github.io && git push origin master
 
 
             
