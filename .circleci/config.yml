@@ -39,9 +39,7 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-# workflows:
-#   jobs:
-#     - build:
-#       filters:
-#         branches:
-#           only: master
+workflows:
+  version: 2
+  jobs:
+    - build
