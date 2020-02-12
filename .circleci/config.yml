@@ -129,16 +129,7 @@ workflows:
   node-android-ios:
     jobs:
       - node
-        build:
+        filters:
           branches:
             only:
               - master
-      #- android:
-       #   requires:
-        #    - node
-
-      # - ios:
-        #   requires:
-          #   - node
-
-          
