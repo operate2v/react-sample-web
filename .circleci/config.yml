@@ -92,7 +92,7 @@ jobs:
 
       - run: 
           name: "git push"
-          command: git remote push master
+          command: git push -u origin master
 
 
             
