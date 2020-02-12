@@ -3,7 +3,7 @@ machine:
   environment:
       JAVA_HOME: /usr/lib/jvm/java-9-oracle
 jobs:
-  wow:
+  build:
     working_directory: ~/react-sample-web
     docker:
       - image: reactnativecommunity/react-native-android:latest
@@ -37,3 +37,15 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
+
+
+workflows:
+  version: 2
+  buildtool:
+    jobs:
+      - build:
+        filters:
+          branches:
+            only:
+              - master
+          
