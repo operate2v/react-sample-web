@@ -43,9 +43,8 @@ workflows:
   version: 2
   buildtool:
     jobs:
-      - build:
-        filters:
-          branches:
-            only:
-              - master
+      filters:
+        branches:
+          only:
+            - master
           
