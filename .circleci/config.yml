@@ -75,7 +75,7 @@ jobs:
 
       - run: 
           name: "get clone"
-          command: git clone git@github.com:operate2v/operate2v.github.io.git
+          command: git clone https://github.com/operate2v/operate2v.github.io.git
 
       - run: 
           name: "make test"
