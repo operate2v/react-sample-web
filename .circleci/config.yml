@@ -15,9 +15,9 @@ jobs:
 
       - checkout
 
-      - add_ssh_keys:
-          fingerprints:
-            - "9e:64:da:ce:0c:8d:26:67:07:cf:f8:36:b1:22:02:19"
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "9e:64:da:ce:0c:8d:26:67:07:cf:f8:36:b1:22:02:19"
 
       
       # - run:
