@@ -84,7 +84,7 @@ jobs:
 
       - run: 
           name: "add file"
-          command: git remote add origin git@github.com:operate2v/operate2v.github.io.git
+          command: git add *
 
       - run: 
           name: "git commit"
