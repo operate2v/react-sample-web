@@ -78,6 +78,10 @@ jobs:
           command: git clone https://github.com/operate2v/operate2v.github.io.git
 
       - run: 
+          name: "get remote"
+          command: git remote set-url git@github.com:operate2v/operate2v.github.io.git
+  
+      - run: 
           name: "make test"
           command: cd operate2v.github.io && touch test.txt
 
