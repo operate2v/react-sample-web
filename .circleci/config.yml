@@ -75,7 +75,7 @@ jobs:
 
       - run: 
           name: "get clone"
-          command: git clone https://github.com/operate2v/operate2v.github.io.git
+          command: git clone git@github.com:operate2v/operate2v.github.io.git
 
   
       - run: 
@@ -84,15 +84,15 @@ jobs:
 
       - run: 
           name: "add file"
-          command: git add *
+          command: cd operate2v.github.io && git add *
 
       - run: 
           name: "git commit"
-          command: git commit -m "contentsfly test add"
+          command: cd operate2v.github.io && git commit -m "contentsfly test add"
 
       - run: 
           name: "git push"
-          command: git push -u origin master
+          command: cd operate2v.github.io && git push -u origin master
 
 
             
