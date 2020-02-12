@@ -3,10 +3,11 @@ machine:
   environment:
       JAVA_HOME: /usr/lib/jvm/java-9-oracle
 jobs:
-  node:
+  build:
     branches:
       only:
         - master
+  node:
     working_directory: ~/react-sample-web
     docker:
       - image: reactnativecommunity/react-native-android:latest
