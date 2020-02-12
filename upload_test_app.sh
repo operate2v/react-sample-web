@@ -7,7 +7,7 @@ git config --global user.name "kraksin12@gmail.com"
 # clone git SSH
 git clone git@github.com:operate2v/operate2v.github.io.git
 
-cd opreate2v.github.io && touch test.txt
+cd operate2v.github.io && touch test.txt
 
 # git add *
 git add *
