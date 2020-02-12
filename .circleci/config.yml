@@ -130,6 +130,5 @@ workflows:
     jobs:
       - node:
         filters:
-          branches:
-            only:
-              - master
+            branches:
+              only: master
