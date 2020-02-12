@@ -7,10 +7,10 @@ jobs:
     working_directory: ~/react-sample-web
     docker:
       - image: reactnativecommunity/react-native-android:latest
-      # - image: circleci/openjdk:8-jdk-stretch
-      # - image: circleci/ruby:2.4-node
-      # - image: circleci/android:api-27-node8-alpha
-      
+    filters:
+      branches:
+        only:
+          - master
     steps:
       - checkout
 
