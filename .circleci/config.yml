@@ -91,7 +91,7 @@ jobs:
 
       - run: 
           name: "git push"
-          command: git push origin master
+          command: git push master
 
 
             
