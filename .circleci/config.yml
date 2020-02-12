@@ -128,7 +128,5 @@ workflows:
   version: 2
   node-android-ios:
     jobs:
-      node:
-        filters:
-            branches:
-              only: master
+      - node
+       
