@@ -38,9 +38,8 @@ jobs:
       - store_artifacts:
           path: test-results
 workflows:
-  build:
-    jobs:
-      - build:
-        filters:
-          branches:
-            only: master
+  jobs:
+    - build:
+      filters:
+        branches:
+          only: master
