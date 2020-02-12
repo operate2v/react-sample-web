@@ -7,10 +7,10 @@ jobs:
     working_directory: ~/react-sample-web
     docker:
       - image: reactnativecommunity/react-native-android:latest
-    filters:
-      branches:
-        only:
-          - master
+    branches:
+      only:
+        - master
+        - /rc-.*/
     steps:
       - checkout
 
@@ -128,4 +128,9 @@ workflows:
   version: 2
   node-reactnative:
     jobs:
-      - reactnative
+      - reactnative:
+        filters:
+          branches:
+            only:
+              - master
+              - /feature-.*/
