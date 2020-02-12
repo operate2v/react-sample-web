@@ -128,12 +128,11 @@ workflows:
   version: 2
   node-android-ios:
     jobs:
-      
-      build:
-        branches:
-          only:
-            - master
-        - node
+      - node
+        build:
+          branches:
+            only:
+              - master
       #- android:
        #   requires:
         #    - node
